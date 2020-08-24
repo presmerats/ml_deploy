@@ -1,0 +1,15 @@
+numpy
+matplotlib
+pandas
+seaborn
+sklearn
+scipy
+ipython
+ipykernel
+notebook
+nbconvert
+nbformat
+jupyter
+jupyter-client
+jupyter-console
+jupyter-core

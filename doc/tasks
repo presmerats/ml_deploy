@@ -1,0 +1,56 @@
+# Task list
+
+## Day 1 - Monday
+
+* ok- task list
+* ok-basic folder structure of the project
+* ok-EDA notebook: 
+    * ok-missing data, 
+    * ok-errors, 
+    * ok-outliers distribution,
+    * outliers boxplots
+    * ok-correlation, 
+    * normalization needed?
+* prototype notebook
+    * ok-normalize, 
+    * ok-train linearRegression
+    * train with bigger sample (and time it)
+    * remove correlated and compare 
+    * other models: radomForrest for regression, 
+
+* allocate 2h for ML in production watching?
+
+## Day 2 - Tuesday
+
+* write a train + predict pipeline with scikit-learn
+    * config file in yaml
+    * folder for the pickle file of the model
+    * last version form a file
+    * trains from a csv file (with train, val and test and final performance)
+    * make train 
+    * make publish 
+* unit tests for the pipeline 
+    * utils.py?
+    * pipeline data preparation functions
+    * pipeline training functions?
+    * pipeline model serving & configuration modification
+* Dockerize the pipeline 
+
+
+
+## Day 3 - Wednesday
+
+* Flask API basics
+* Dockerized Flask API
+* stress testing the API 
+* unit tests for the Flask API?
+
+## Day 4 - Thursday
+
+- 1500 POST/minute
+- cache server?
+- Kubernetes? any online free platform to do so?
+- Architecture
+- logging metrics:
+    * services: % cpu, % memory, response time
+    * model: distribution, inference time, 
