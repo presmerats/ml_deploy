@@ -2,6 +2,7 @@ import pandas as pd
 
 from typeform_challenge.processing.data_management import load_pipeline
 from typeform_challenge.config import config
+from typeform_challenge.processing.validation import validate_inputs
 
 
 pipeline_file_name = "typeform_challenge.pkl"
@@ -12,6 +13,7 @@ def make_prediction(*, input_data) -> dict:
     """Make a prediction using the saved model pipeline."""
 
     data = pd.read_json(input_data)
+    validated_data = validate_inputs(input_data=data)
     prediction = _typeform_pipe.predict(data[config.FEATURES])
     # inverse_transform (empty for now)
     output = prediction
