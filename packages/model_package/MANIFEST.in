@@ -1,0 +1,16 @@
+include *.txt
+include *.md
+include *.cfg
+include *.pkl
+recursive-include ./typeform_challenge/*
+
+include typeform_challenge/datasets/train.csv
+include typeform_challenge/datasets/test.csv
+include typeform_challenge/trained_models/*.pkl
+include typeform_challenge/VERSION
+
+include ./requirements.txt
+exclude *.log
+
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]

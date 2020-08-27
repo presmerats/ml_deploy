@@ -14,30 +14,206 @@
 * prototype notebook
     * ok-normalize, 
     * ok-train linearRegression
-    * train with bigger sample (and time it)
+->  * train with bigger sample (and time it)
     * remove correlated and compare 
-    * other models: radomForrest for regression, 
+    * other models: radomForrest for regression,
+    * use this pipeline to train for another regression model 
 
 * allocate 2h for ML in production watching?
 
 ## Day 2 - Tuesday
 
-* write a train + predict pipeline with scikit-learn
-    * config file in yaml
-    * folder for the pickle file of the model
-    * last version form a file
-    * trains from a csv file (with train, val and test and final performance)
-    * make train 
-    * make publish 
+     
+* ok-Deploying Machine Learning Models Udemy
+    * ok-section 2
+        * ok-house pricing ds-portfolio notes 
+        * ok-copy the notebook of data analysis
+        * ok- notes on feature engineering
+        * Feature selection
+        * Model training notes
+        * Model deployment notes
+    * ok-section 3
+
+
+* finish model prototype
+    
+    * ok-review performance 
+        * ok-other models: ridge,radomForrest for regression, Knn-regressor
+        * ok-train with bigger sample (and time it)
+        * ok-remove features and expect performance drop 
+        * ok-remove correlated and compare : increase in performance?
+
+    * ok-review performance 2
+        * ok-for each feature
+            * ok-scatter plot with target + correlation value with target
+            * ok-distribution alone to see outliers
+            * ok-box plot to see outliers
+
+        * ok-repeat after log transform
+
+        * ok-Manually list down the outlier removal features 
+            ->not clear!
+        * ok-list down the more correlated vars -> from correlation matrix?
+            
+        
+    * Performance GridSearch
+->
+        * prepare pipe for standardScaleer, maxminscaler, no scaler 
+->
+        * prepare pipe for : feature selection(Lasso and manual )  + prepare the different lists and the generation of combinations
+->
+        * prepare pipe for plain/transformed features/transformed target
+->
+        * add plot of R2 and MAE and add RMSE 
+            https://scikit-learn.org/stable/auto_examples/compose/plot_transformed_target.html
+
+        * add histogram of residuals to see if they are Gaussian
+->
+        * Grid Search launch a ridge regression with each feature and each combination of it
+            * comb 1: features alone, combinations, all, all - correlated , lasso-FeatureSelection
+            * comb 2: plain features ,transformed features, transformed target, 
+            * comb 3: standardScaler, no scaling, maxminscaler
+
+            
+        * use this pipeline to train for another regression model 
+            * make sure performance is the expected one
+
+        * conclude
+            * next steps?
+            * gather assumptions of the model
+
+
+## Day 3 - Wednesday
+
+
+* typeform
+    * ok-Data Analytics notebook review    
+        * ok-add deployML course data analytics actions 
+        * ok-Observations of non applicable log transform on features
+        * ok-target transformation: box-cox and quantile test 
+        * ok-Box-Cox & Quantile transformations of cont. features
+        * ok-MinMaxScaler plots
+        * ok-StandardScaler plots
+        * ok-Outliers removal
+        * ok-add correlations between features sorted to the transformed variables 
+        * ok-pair-plots of subset
+        * ok-conclusions on correlation
+        
+        
+    * Feature Eng., Sel. and model prototyping notebook 
+        * ok-following deployML course actions , with evaluation and plots 
+            ok- target transformation 
+            ok- discrete vars -> reorderdic dict (copy what's done in categorical vars)
+            ok- remove correlated -> prepare it (even if later it is discarded)
+            ok- scaling MinMaxScaling vs StandardScaler 
+            ok- model selection with Lasso 
+            ok- model building
+            ok- fix error for nocorr
+            - final tests (for a better performance )
+                - MinMaxScaler + Quantile transform : how to invert?
+                - Nothing on the target
+                ok- all features, no corr features, all + fs(adjust lasso), no corr+fs(adjust lasso)
+                - use lasso and use ridge
+                -> 16 different datatsets
+                    - af_t
+                    - af_t_dr
+                    - af_qt
+                    - af_ms
+                    - af_qt_ms
+                    - nc_t
+                    - nc_qt
+                    - nc_ms
+                    - nc_qt_ms
+                    - afs_t
+                    - afs_qt
+                    - afs_ms
+                    - afs_qt_ms
+                    - ncs_t
+                    - ncs_qt
+                    - ncs_ms
+                    - ncs_qt_ms
+                    x discrete reordering or not !-> 32 datasets
+
+        ok-> SOME RESULT
+            ok-> int(sqtr(mean_squre_error))!! that was failing completely
+
+        -> maxmin scaler just before training?
+            -> just before
+            -> add on the dataset 
+
+        -> please make the cls fit something!!
+            push that r2 up!
+            - can't find a complex enough and not overfitting model
+
+        -> take best RandomForest and KNregre and run them through all the datasets
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------
+
+## Day 4 Thursday
+
+* ok-30mcopy Scikit-pipeline code with my feature engineering and my model
+    ok--> take best RandomForest and KNregre and run them through all the datasets
+
+
+* 2h30m Deploying Machine Learning Models Udemy
+    * ok-section 4 Production code
+    * ok-section 5 Tools 
+    * ok-section 6 ML Pipeline 
+
+* 30m Fine-tune the ML Pipeline
+    - package structure, separation of concerns
+    - data validation
+    - unit tests
+    - versioning
+    - logging
+
+
+* 40m Deploying Machine Learning Models Udemy
+    * section 7 REST API
+
+* 1h Flask API manually publish the service for prediction
+
+
+* 2h Dockerize the pipeline 
+    * 30m section 11
+    * 1h30m dockerize
+
+
 * unit tests for the pipeline 
     * utils.py?
     * pipeline data preparation functions
     * pipeline training functions?
     * pipeline model serving & configuration modification
-* Dockerize the pipeline 
 
 
+* FINAL model improvement
+    - use quantile transform and inverse transform
+    - plot scatter and r2 for training and testing to see overfitting effect
+    - use Keras to overfit the training set and then regularize
 
+--------------------------------
 ## Day 3 - Wednesday
 
 * Flask API basics
