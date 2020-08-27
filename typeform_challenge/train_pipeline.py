@@ -8,6 +8,12 @@ import joblib
 from typeform_challenge import pipeline
 from typeform_challenge.config import config
 from typeform_challenge.processing.data_management import load_dataset, save_pipeline
+from typeform_challenge import __version__ as _version
+
+import logging
+
+
+_logger = logging.getLogger(__name__)
 
 
 def run_training() -> None:

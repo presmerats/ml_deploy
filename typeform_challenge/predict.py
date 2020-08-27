@@ -3,9 +3,15 @@ import pandas as pd
 from typeform_challenge.processing.data_management import load_pipeline
 from typeform_challenge.config import config
 from typeform_challenge.processing.validation import validate_inputs
+from typeform_challenge import __version__ as _version
+
+import logging
 
 
-pipeline_file_name = "typeform_challenge.pkl"
+_logger = logging.getLogger(__name__)
+
+
+pipeline_file_name = f"{config.PIPELINE_SAVE_FILE}{_version}.pkl"
 _typeform_pipe = load_pipeline(file_name=pipeline_file_name)
 
 
@@ -17,6 +23,13 @@ def make_prediction(*, input_data) -> dict:
     prediction = _typeform_pipe.predict(data[config.FEATURES])
     # inverse_transform (empty for now)
     output = prediction
-    response = {"predictions": output}
 
-    return response
+    results = {"predictions": output, "version": _version}
+
+    _logger.info(
+        f"Making predictions with model version: {_version} "
+        f"Inputs: {validated_data} "
+        f"Predictions: {results}"
+    )
+
+    return results

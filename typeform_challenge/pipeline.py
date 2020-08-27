@@ -4,6 +4,10 @@ from sklearn.preprocessing import MinMaxScaler
 
 from typeform_challenge.processing import preprocessors as pp
 from typeform_challenge.config import config
+import logging
+
+
+_logger = logging.getLogger(__name__)
 
 
 """
