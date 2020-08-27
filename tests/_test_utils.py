@@ -1,7 +1,7 @@
 import unittest
 from unittest import mock
 from unittest.mock import patch, Mock
-from typeformtest.utils import (
+from notebooks.utils import (
     print_distribution,
     data_preparation_pipe,
     data_preparation_pipe2,

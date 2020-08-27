@@ -7,23 +7,14 @@ import joblib
 
 from typeform_challenge import pipeline
 from typeform_challenge.config import config
-
-
-def save_pipeline(*, pipeline_to_persist) -> None:
-    """Persist the pipeline."""
-
-    save_file_name = "typeform_challenge.pkl"
-    save_path = config.TRAINED_MODEL_DIR / save_file_name
-    joblib.dump(pipeline_to_persist, save_path)
-
-    print("saved pipeline")
+from typeform_challenge.processing.data_management import load_dataset, save_pipeline
 
 
 def run_training() -> None:
     """Train the model."""
 
     # read training data
-    data = pd.read_csv(config.DATASET_DIR / config.TRAINING_DATA_FILE)
+    data = load_dataset(file_name=config.TRAINING_DATA_FILE)
 
     # generate the target
     data["completion_rate"] = data["submissions"] / data["views"]
