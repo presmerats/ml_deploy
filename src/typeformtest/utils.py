@@ -16,9 +16,9 @@ from sklearn.pipeline import Pipeline
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import mean_squared_error
-from sklearn.linear_model import LogisticRegression, Ridge
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LinearRegression, Ridge
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.neighbors import KNeighborsRegressor
 
 
 def print_distribution(dataf, column, axis):
@@ -154,13 +154,13 @@ def data_preparation_pipe(numerical_columns=[]):
 
 def get_model(model_type):
     models = {
-        "logisticRegression": LogisticRegression(),
-        "randomForest": RandomForestClassifier(),
+        "RandomForestRegressor": RandomForestRegressor(),
         "linearRegression": LinearRegression(),
-        "Ridge": Ridge(alpha=0.5),
+        "Ridge": Ridge(),
+        "KNeighborsRegressor": KNeighborsRegressor(),
     }
 
-    return models.get(model_type, models["logisticRegression"])
+    return models.get(model_type, models["linearRegression"])
 
 
 def global_pipeline_train(
@@ -207,8 +207,8 @@ def global_pipeline_train(
         "trained_score": grid.best_score_,
         "scorer_func": grid.scorer_._score_func.__name__,
         "params": grid.best_params_,
-        "test_score": score_cls(
-            y_true, y_pred
+        "test_score": np.sqrt(
+            score_cls(y_true, y_pred)
         ),  # f1_score(y_true, y_pred, average=the_average),
     }
 
