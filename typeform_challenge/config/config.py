@@ -1,6 +1,19 @@
+import pathlib
+
+import typeform_challenge
+
+
+PACKAGE_ROOT = pathlib.Path(typeform_challenge.__file__).resolve().parent
+TRAINED_MODEL_DIR = PACKAGE_ROOT / "trained_models"
+DATASET_DIR = PACKAGE_ROOT / "datasets"
+
 # data
-TRAINING_DATA_FILE = "typeformtest/datasets/completion_rate.csv"
-PIPELINE_NAME = "regression_pipe"
+TESTING_DATA_FILE = "test.csv"
+# TRAINING_DATA_FILE = "train.csv"
+TRAINING_DATA_FILE = "completion_rate.csv"
+
+
+# PIPELINE_NAME = "regression_pipe"
 
 TARGET = "completion_rate"
 

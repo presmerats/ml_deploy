@@ -2,8 +2,9 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import MinMaxScaler
 
-import preprocessors as pp
-import config
+from typeform_challenge.processing import preprocessors as pp
+from typeform_challenge.config import config
+
 
 """
 First version pipeline will include:
@@ -14,7 +15,7 @@ MinMaxScaler
 
 """
 
-price_pipe = Pipeline(
+typeform_pipe = Pipeline(
     [
         # ("remove_unwanted", pp.DropUnwanted(variables_to_drop=config.UNWANTED_VARS),),
         ("reorder_discrete", pp.ReorderDiscreteVars(variables=config.DISCRETE_VARS),),
