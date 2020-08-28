@@ -21,7 +21,8 @@ def make_prediction(*, input_data) -> dict:
 
     _logger.info(f"input_data: {input_data}" f"type: {type(input_data)}")
 
-    input_data = pd.read_json(input_data)
+    if isinstance(input_data, str):
+        input_data = pd.read_json(input_data)
     data = pd.DataFrame(input_data)
     validated_data = validate_inputs(input_data=data)
     prediction = _typeform_pipe.predict(data[config.FEATURES])
