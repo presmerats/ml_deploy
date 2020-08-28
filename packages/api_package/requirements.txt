@@ -1,5 +1,5 @@
---index-url https://${FURY_AUTH}:@pypi.fury.io/USERNAME/
---extra-index-url https://pypi.org/simple/
+# --index-url https://${FURY_AUTH}:@pypi.fury.io/USERNAME/
+# --extra-index-url https://pypi.org/simple/
 
 # api
 flask==1.0.2
