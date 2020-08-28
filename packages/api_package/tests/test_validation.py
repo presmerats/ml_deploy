@@ -13,6 +13,8 @@ def test_prediction_endpoint_validation_200(flask_test_client):
     test_data = load_dataset(file_name=config.TESTING_DATA_FILE)
     post_json = test_data.to_json(orient="records")
 
+    print("post_json", post_json)
+
     # When
     response = flask_test_client.post(
         "/v1/predict/regression", json=json.loads(post_json)
