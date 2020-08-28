@@ -19,9 +19,9 @@ _typeform_pipe = load_pipeline(file_name=pipeline_file_name)
 def make_prediction(*, input_data) -> dict:
     """Make a prediction using the saved model pipeline."""
 
-    # data = pd.read_json(input_data)
     _logger.info(f"input_data: {input_data}" f"type: {type(input_data)}")
 
+    input_data = pd.read_json(input_data)
     data = pd.DataFrame(input_data)
     validated_data = validate_inputs(input_data=data)
     prediction = _typeform_pipe.predict(data[config.FEATURES])
