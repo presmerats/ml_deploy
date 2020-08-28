@@ -182,7 +182,7 @@
     * ok-section 5 Tools 
     * ok-section 6 ML Pipeline 
 
-* 30m Fine-tune the ML Pipeline
+* ok-30m Fine-tune the ML Pipeline
     - package structure, separation of concerns
     - data validation
     - unit tests
@@ -190,43 +190,46 @@
     - logging
 
 
-* 40m Deploying Machine Learning Models Udemy
+* ok-40m Deploying Machine Learning Models Udemy
     * section 7 REST API
 
-* 1h Flask API manually publish the service for prediction
+* ok-1h Flask API manually publish the service for prediction
 
+* 49m CD & CI 
+    * watch 
+->  * apply
+        - test locally
+            - api_package requirement from fury.io 
+            - circleci job to deploy model_package to fury.io
+            - api_package to install from fury.io  
+                env_var with api token from gemfury
+
+* 15m differential testing
 
 * 2h Dockerize the pipeline 
     * 30m section 11
     * 1h30m dockerize
 
+* PENDING TASKS
 
-* unit tests for the pipeline 
-    * utils.py?
-    * pipeline data preparation functions
-    * pipeline training functions?
-    * pipeline model serving & configuration modification
+- 1500 POST/minute
+    * how to stress test?
+        https://github.com/wg/wrk
+    * how to solve? kubernetes, proxy cache, 
+
+- hot reload after train+predict pipeline (pull request ci&cd)
+    https://stackoverflow.com/questions/16344756/auto-reloading-python-flask-app-upon-code-changes
+
+- Describe Architecture
+- Describe logging metrics for http API instrumentatoin:
+    * services: % cpu, % memory, response time
+    * model: distribution, inference time, 
 
 
+
+-------------
 * FINAL model improvement
     - use quantile transform and inverse transform
     - plot scatter and r2 for training and testing to see overfitting effect
     - use Keras to overfit the training set and then regularize
 
---------------------------------
-## Day 3 - Wednesday
-
-* Flask API basics
-* Dockerized Flask API
-* stress testing the API 
-* unit tests for the Flask API?
-
-## Day 4 - Thursday
-
-- 1500 POST/minute
-- cache server?
-- Kubernetes? any online free platform to do so?
-- Architecture
-- logging metrics:
-    * services: % cpu, % memory, response time
-    * model: distribution, inference time, 

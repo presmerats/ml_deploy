@@ -15,7 +15,7 @@ def test_make_single_prediction():
     # Then
     assert subject is not None
     assert isinstance(subject.get("predictions")[0], float)
-    assert round(subject.get("predictions")[0], 4) == 0.4865
+    assert round(subject.get("predictions")[0], 4) == 0.6848
 
 
 def test_make_multiple_predictions():
