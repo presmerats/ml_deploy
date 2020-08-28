@@ -9,15 +9,8 @@ class InvalidInputError(Exception):
     """Invalid model input."""
 
 
-SYNTAX_ERROR_FIELD_MAP = {
-    "1stFlrSF": "FirstFlrSF",
-    "2ndFlrSF": "SecondFlrSF",
-    "3SsnPorch": "ThreeSsnPortch",
-}
-
-
 class DataRequestSchema(Schema):
-    form_id = fields.Str()
+    form_id = fields.Integer()
     views = fields.Integer()
     submissions = fields.Integer()
     feat_01 = fields.Float()
@@ -108,6 +101,8 @@ def validate_inputs(input_data):
     #         del dict[value]
 
     if errors:
+        if isinstance(input_data, str):
+            input_data = json.loads(input_data)
         validated_input = _filter_error_rows(errors=errors, validated_input=input_data)
     else:
         validated_input = input_data
