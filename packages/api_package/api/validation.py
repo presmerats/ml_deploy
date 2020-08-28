@@ -82,6 +82,8 @@ def validate_inputs(input_data):
     # set many=True to allow passing in a list
     schema = DataRequestSchema(strict=True, many=True)
 
+    if isinstance(input_data, str):
+        input_data = json.loads(input_data)
     # # convert syntax error field names (beginning with numbers)
     # for dict in input_data:
     #     for key, value in SYNTAX_ERROR_FIELD_MAP.items():
@@ -103,8 +105,7 @@ def validate_inputs(input_data):
     #         del dict[value]
 
     if errors:
-        if isinstance(input_data, str):
-            input_data = json.loads(input_data)
+
         print(errors)
         validated_input = _filter_error_rows(errors=errors, validated_input=input_data)
     else:
