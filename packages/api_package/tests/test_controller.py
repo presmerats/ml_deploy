@@ -57,5 +57,7 @@ def test_prediction_endpoint_returns_prediction(flask_test_client):
     response_json = json.loads(response.data)
     prediction = response_json["predictions"]
     response_version = response_json["version"]
+    if isinstance(prediction, list):
+        prediction = prediction[0]
     assert round(prediction, 4) == 0.6848
     assert response_version == _version
