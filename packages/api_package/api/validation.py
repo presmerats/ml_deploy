@@ -69,6 +69,8 @@ def _filter_error_rows(errors: dict, validated_input: t.List[dict]) -> t.List[di
     # delete them in reverse order so that you
     # don't throw off the subsequent indexes.
     for index in sorted(indexes, reverse=True):
+        if index == "_schema":
+            continue
         del validated_input[index]
 
     return validated_input
