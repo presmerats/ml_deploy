@@ -53,7 +53,7 @@ jobs:
       - run:
           name: Publish model
           command: |
-            . venv/bin/activate/
+            . venv/bin/activate
             PYTHONPATH=./packages/model_package python3 packages/model_package/typeform_challenge/train_pipeline.py
             ./scripts/publish_model.sh ./packages/regression_model/
           
