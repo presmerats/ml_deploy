@@ -103,6 +103,7 @@ def validate_inputs(input_data):
     if errors:
         if isinstance(input_data, str):
             input_data = json.loads(input_data)
+        print(errors)
         validated_input = _filter_error_rows(errors=errors, validated_input=input_data)
     else:
         validated_input = input_data
