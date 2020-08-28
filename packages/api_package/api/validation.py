@@ -17,6 +17,9 @@ SYNTAX_ERROR_FIELD_MAP = {
 
 
 class DataRequestSchema(Schema):
+    form_id = fields.Str()
+    views = fields.Integer()
+    submissions = fields.Integer()
     feat_01 = fields.Float()
     feat_02 = fields.Float()
     feat_03 = fields.Float()
