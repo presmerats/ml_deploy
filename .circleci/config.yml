@@ -1,0 +1,97 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@0.2.1
+
+defaults: &defaults
+  docker:
+    - image: circleci/python:3.7.7
+  working_directory: ~/project
+
+prepare_venv: &prepare_venv
+  run:
+    name: Create venv
+    command: |
+      python3 -m venv venv
+      source venv/bin/activate
+      pip install --upgrade pip
+
+
+jobs:
+  test-regression-model:
+    <<: *defaults
+    steps:
+      - checkout
+      - *prepare_venv
+      - run:
+          name: Install requirements
+          command: |
+            . venv/bin/activate
+            pip install -r packages/model_package/requirements.txt
+      - run:
+          name: Train model
+          command: |
+            . venv/bin/activate
+            PYTHONPATH=./packages/model_package python3 packages/model_package/typeform_challenge/train_pipeline.py
+      - run:
+          name: Run tests
+          command: |
+            . venv/bin/activate
+            py.test -vv packages/model_package/tests
+
+  test-ml-api:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - py-deps-{{ checksum "packages/api_package/requirements.txt" }}
+      - run:
+          name: Running tests
+          command: |
+            virtualenv venv
+            . venv/bin/activate
+            pip install --upgrade pip
+            pip install -r packages/api_package/requirements.txt
+            py.test -vv packages/api_package/tests
+      - save_cache:
+          key: py-deps-{{ checksum "packages/api_package/requirements.txt" }}
+          paths:
+            - "/venv"
+
+  train-and-upload-regression-model:
+    <<: *defaults
+    steps:
+      - checkout
+      - *prepare_venv
+      - run:
+          name: Install requirements
+          command: |
+            . venv/bin/activate
+            pip install -r packages/model_package/requirements.txt
+      - run:
+          name: Train model
+          command: |
+            . venv/bin/activate
+            PYTHONPATH=./packages/model_package python3 packages/model_package/typeform_challenge/train_pipeline.py
+      - run:
+          name: Publish model
+          command: |
+            . venv/bin/activate
+            ./scripts/publish_model.sh ./packages/model_package/
+          
+
+workflows:
+  test-all:
+    jobs:
+      - test-regression-model
+      - test-ml-api
+      - train-and-upload-regression-model:
+          requires:
+            - test-regression-model
+            - test-ml-api
+          # filters:
+          #   branches:
+          #     only:
+          #       - master
+    

@@ -1,3 +1,6 @@
+# --index-url https://${FURY_AUTH}:@pypi.fury.io/USERNAME/
+# --extra-index-url https://pypi.org/simple/
+
 # api
 flask==1.0.2
 
@@ -7,4 +10,5 @@ marshmallow==2.17.0
 
 # local regression_model package
 # update with your local path
--e /home/pau/Projectes/typeform_test/model_package
+#-e /home/pau/Projectes/typeform_test/model_package
+typeform_challenge==0.1.6

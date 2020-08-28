@@ -9,14 +9,10 @@ class InvalidInputError(Exception):
     """Invalid model input."""
 
 
-SYNTAX_ERROR_FIELD_MAP = {
-    "1stFlrSF": "FirstFlrSF",
-    "2ndFlrSF": "SecondFlrSF",
-    "3SsnPorch": "ThreeSsnPortch",
-}
-
-
 class DataRequestSchema(Schema):
+    form_id = fields.Integer()
+    views = fields.Integer()
+    submissions = fields.Integer()
     feat_01 = fields.Float()
     feat_02 = fields.Float()
     feat_03 = fields.Float()
@@ -73,6 +69,8 @@ def _filter_error_rows(errors: dict, validated_input: t.List[dict]) -> t.List[di
     # delete them in reverse order so that you
     # don't throw off the subsequent indexes.
     for index in sorted(indexes, reverse=True):
+        if index == "_schema":
+            continue
         del validated_input[index]
 
     return validated_input
@@ -84,6 +82,8 @@ def validate_inputs(input_data):
     # set many=True to allow passing in a list
     schema = DataRequestSchema(strict=True, many=True)
 
+    if isinstance(input_data, str):
+        input_data = json.loads(input_data)
     # # convert syntax error field names (beginning with numbers)
     # for dict in input_data:
     #     for key, value in SYNTAX_ERROR_FIELD_MAP.items():
@@ -105,6 +105,8 @@ def validate_inputs(input_data):
     #         del dict[value]
 
     if errors:
+
+        print(errors)
         validated_input = _filter_error_rows(errors=errors, validated_input=input_data)
     else:
         validated_input = input_data
