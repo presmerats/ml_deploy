@@ -30,7 +30,7 @@ build() {
     for X in $(ls dist)
     do
         echo "$GEMFURY_URL"
-        curl -F package=@"dist/$X" "$GEMFURY_URL" || die "Uploading package $PACKAGE_NAME failed on file dist/$X"
+        curl -F package=@"dist/$X" "$GEMFURY_URL" || die "Uploading package $PACKAGE_NAME to url $GEMFURY_URL failed on file dist/$X"
     done
 }
 
