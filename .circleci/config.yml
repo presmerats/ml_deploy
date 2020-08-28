@@ -49,7 +49,7 @@ jobs:
           command: |
             virtualenv venv
             . venv/bin/activate
-            ¡pip install -r packages/model_package/requirements.txt
+            pip install -r packages/model_package/requirements.txt
       - run:
           name: Publish model
           command: |
