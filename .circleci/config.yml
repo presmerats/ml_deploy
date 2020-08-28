@@ -61,8 +61,8 @@ jobs:
 workflows:
   test-all:
     jobs:
-      - test-regression-model
-      - test-ml-api
+      #- test-regression-model
+      #- test-ml-api
       - train-and-upload-regression-model
       - test-ml-api:
           requires:
