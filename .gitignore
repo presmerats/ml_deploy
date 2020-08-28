@@ -119,3 +119,14 @@ packages/regression_model/regression_model/datasets/*.txt
 .vscode
 .status
 *.code-workspace
+
+# project related
+data/
+doc/Typeform feature eng-selection
+notebooks/EDA results_distrib.ipynb
+notebooks/EDA transformations & correlations.ipynb
+notebooks/EDA.ipynb
+notebooks/Model Prototype Housing test.ipynb
+notebooks/Model prototype.ipynb
+notebooks/selected_features.csv
+notebooks/selected_features_nocorr.cs
