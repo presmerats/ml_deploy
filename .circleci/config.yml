@@ -1,4 +1,4 @@
-version: 2.1
+version: 2
 
 orbs:
   python: circleci/python@0.2.1
@@ -17,13 +17,12 @@ prepare_venv: &prepare_venv
       pip install --upgrade pip
 
 
-
 jobs:
   test-regression-model:
     <<: *defaults
     steps:
       - checkout
-      - *prepare_env
+      - *prepare_venv
       - run:
           name: Install requirements
           command: |
