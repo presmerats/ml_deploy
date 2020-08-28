@@ -52,7 +52,7 @@ jobs:
             virtualenv venv
             . venv/bin/activate
             pip install --upgrade pip
-            pip install -r packages/model_package/requirements.txt
+            pip install -r packages/api_package/requirements.txt
             py.test -vv packages/api_package/tests
       - save_cache:
           key: py-deps-{{ checksum "packages/api_package/requirements.txt" }}
