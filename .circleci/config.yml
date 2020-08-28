@@ -55,7 +55,7 @@ jobs:
           command: |
             . venv/bin/activate
             PYTHONPATH=./packages/model_package python3 packages/model_package/typeform_challenge/train_pipeline.py
-            ./scripts/publish_model.sh ./packages/regression_model/
+            ./scripts/publish_model.sh ./packages/typeform_challenge/
           
 
 workflows:
