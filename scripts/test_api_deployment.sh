@@ -1,0 +1,1 @@
+curl --header "Content-Type: application/json" --request POST --data @single_test.json https://completion-rate-test.herokuapp.com/v1/predict/regression
