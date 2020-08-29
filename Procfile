@@ -1,0 +1,1 @@
+web: gunicorn --pythonpath packages/api_package --access-logfile - --error-logfile - run:application
