@@ -12,3 +12,6 @@ marshmallow==2.17.0
 # update with your local path
 #-e /home/pau/Projectes/typeform_test/model_package
 typeform_challenge==0.1.6
+
+# deployment Flask does not scale, gunicorn does
+gunicorn==19.9.0

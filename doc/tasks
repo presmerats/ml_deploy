@@ -195,14 +195,21 @@
 
 * ok-1h Flask API manually publish the service for prediction
 
-* 49m CD & CI 
+* ok-49m CD & CI 
     * watch 
-->  * apply
+    * apply
         - test locally
-            - api_package requirement from fury.io 
-            - circleci job to deploy model_package to fury.io
-            - api_package to install from fury.io  
+            ok- api_package requirement from fury.io 
+            ok- circleci job to deploy model_package to fury.io
+            ok- api_package to install from fury.io  
                 env_var with api token from gemfury
+            - fix errors of the circleCI jobs
+                ok- publish package ok
+                - model tests
+                - api test 
+            - restore circleCI jobs order ? 
+
+        - testing the CI pipeline 
 
 * 15m differential testing
 
