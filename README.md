@@ -67,6 +67,13 @@ How CI/CD works
 
 Beware that in packages/api_model/requirements.txt the first 2 lines need to be commented out.
 The CI/CD is launched every time a pull request is made to master. The regression model package is also published at fury.io everytime a push is made to master.
+You can test the deployed API using scripts/test_api_deployment.sh
+```
+cd scripts
+./test_api_deployment.sh
+```
+
+Or manually going to https://completion-rate-test.herokuapp.com/health or https://completion-rate-test.herokuapp.com/version
 
 
 How to generate and run the docker containers
