@@ -1,6 +1,7 @@
-# for local testing only!
-# --index-url https://${FURY_AUTH}:@pypi.fury.io/presmerats/
-# --extra-index-url https://pypi.org/simple/
+--index-url https://19Km2Q-AcBOck87GYYz58pqCFJ0yPR5aA@pypi.fury.io/presmerats/
+--extra-index-url https://pypi.org/simple/
+# uncomment the previous 2 lines for local testing only!
+
 
 # api
 flask==1.0.2
@@ -9,9 +10,9 @@ flask==1.0.2
 marshmallow==2.17.0
 
 
-# local regression_model package
-# update with your local path
-#-e /home/pau/Projectes/typeform_test/model_package
+# now that the package is server from furyi.io
+# we don't need anymore the local path
+#-e /home/pau/Projectes/typeform_test/packages/model_package
 typeform_challenge==0.1.6
 
 # deployment Flask does not scale, gunicorn does
